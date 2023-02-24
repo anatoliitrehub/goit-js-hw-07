@@ -36,20 +36,26 @@ galleryItems.forEach(el=>{
 
 const eventHandler = (event) => {
     event.preventDefault();
+    if(event.target.nodeName!="IMG") return;
+
 
     const instance = basicLightbox.create(`
     <div class="modal">
         <img src=${event.target.dataset.source} width="800" height="600">
     </div>
-    `,{
+    `
+    ,{
         onShow: (instance) => {
-            document.addEventListener('keydown',(event)=>{
-                if (event.key==='Escape') instance.close()
+            document.addEventListener('keydown',(evt)=>{
+                if (evt.key==='Escape') {
+                    instance.close();
+                }
+                
+                console.log(evt.key)
             }) 
-        }
-    })
+        }}
+    )
     instance.show()
-
 }
 
 divGallery.addEventListener('click',eventHandler);
