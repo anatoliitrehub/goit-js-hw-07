@@ -51,7 +51,6 @@ const eventHandler = (event) => {
                     instance.close();
                 }
                 
-                console.log(evt.key)
             }) 
         }}
     )
